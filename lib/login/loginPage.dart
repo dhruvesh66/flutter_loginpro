@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_loginpro/utils/MyRoutes.dart';
 
@@ -32,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
               fontSize: 28,
               fontWeight: FontWeight.bold,
             ),
+            textDirection: TextDirection.ltr,
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
@@ -52,30 +52,34 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 40,
               ),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    changeButton = true;
-                  });
-                  Navigator.pushNamed(context, MyRoutes.homePage);
-                },
-                child: AnimatedContainer(
-                  width: changeButton ? 50 : 150,
-                  height: 50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    changeButton ? "^" : "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+              Material(
+                color: Colors.deepPurple,
+                borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
+                  onTap: () async {
+                    setState(() {
+                      changeButton = true;
+                    });
+                    await Future.delayed(Duration(milliseconds: 400));
+                    Navigator.pushNamed(context, MyRoutes.homePage);
+                  },
+                  child: AnimatedContainer(
+                    width: changeButton ? 50 : 150,
+                    height: 50,
+                    alignment: Alignment.center,
+                    child: changeButton
+                        ? Icon(Icons.done)
+                        : Text(
+                            "Login",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                    duration: Duration(milliseconds: 400),
                   ),
-                  decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius:
-                          BorderRadius.circular(changeButton ? 20 : 8)),
-                  duration: Duration(seconds: 1),
                 ),
               ),
             ]),

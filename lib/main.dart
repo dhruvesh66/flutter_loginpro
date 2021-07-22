@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData(primarySwatch: Colors.cyan),
       routes: MyRoutes.routes(),
+      initialRoute: MyRoutes.login,
     );
   }
 }
