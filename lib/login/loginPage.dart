@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                     if (password.hasMatch(value))
                       return null;
                     else
-                      return "password must have character and number and length more than 6 character";
+                      return "password cahnge must have character and number and length more than 6 character";
                   },
                   decoration: InputDecoration(
                     hintText: "Enter Password",
